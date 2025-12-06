@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ATfrontend</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
+    <script src="./scripts.js" defer></script>
+
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "foreground-light": "#0a0a0a",
+              "foreground-dark": "#ffffff",
+              "card-light": "#ffffff",
+              "card-dark": "#151d2c",
+              "muted-light": "#6b7280",
+              "muted-dark": "#92a4c9",
+            },
+            fontFamily: {
+              display: ["Spline Sans", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="bg-background-dark font-display text-foreground-dark">
+    <div class="relative flex min-h-screen w-full flex-col">
+      <div class="layout-container flex h-full grow flex-col">
+        <div class="flex flex-1 justify-center py-5 sm:px-10 md:px-20 lg:px-40">
+          <div class="layout-content-container flex max-w-[960px] flex-1 flex-col">
+            <header id="home" class="sticky top-5 z-50 mx-4 flex items-center justify-between whitespace-nowrap rounded-xl border border-white/10 bg-card-dark/80 px-6 py-3 backdrop-blur-sm md:mx-0">
+              <div class="flex items-center gap-4">
+                <a href="#home" class="flex items-center gap-3">
+                  <div class="flex items-center gap-2 rounded-full bg-white/10 px-5 py-2.5 ring-1 ring-white/20">
+                    <span class="text-xl font-extrabold tracking-wide text-primary">AT</span>
+                    <span class="text-sm font-semibold text-foreground-dark">Frontend</span>
+                  </div>
+                </a>
+              </div>
+              <nav class="hidden flex-1 items-center justify-end gap-8 md:flex">
+                <a href="#about" class="text-muted-dark hover:text-foreground-dark text-sm font-medium">About</a>
+                <a href="#skills" class="text-muted-dark hover:text-foreground-dark text-sm font-medium">Skills</a>
+                <a href="#projects" class="text-muted-dark hover:text-foreground-dark text-sm font-medium">Projects</a>
+                <a href="#testimonials" class="text-muted-dark hover:text-foreground-dark text-sm font-medium">Testimonials</a>
+                <a href="#contact" class="text-muted-dark hover:text-foreground-dark text-sm font-medium">Contact</a>
+              </nav>
+              <div class="md:hidden">
+                <button id="mobile-menu-button" class="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-foreground-dark"><span class="material-symbols-outlined">menu</span></button>
+              </div>
+            </header>
+
+            <!-- Backdrop -->
+            <div id="mobile-backdrop" class="fixed inset-0 z-40 bg-black/50 hidden"></div>
+
+            <!-- Drawer -->
+            <nav id="mobile-drawer" class="fixed top-0 right-0 z-50 h-full w-64 translate-x-full transition-transform duration-300 ease-out rounded-l-xl border border-white/10 bg-card-dark/95 backdrop-blur-sm p-4">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 ring-1 ring-white/20">
+                  <span class="text-lg font-extrabold tracking-wide text-primary">AT</span>
+                  <span class="text-xs font-semibold text-foreground-dark">Frontend</span>
+                </div>
+                <button id="mobile-close-button" class="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 text-foreground-dark">
+                  <span class="material-symbols-outlined">close</span>
+                </button>
+              </div>
+              <ul class="space-y-2">
+                <li><a href="#about" class="block rounded-lg px-3 py-2 text-sm text-muted-dark hover:bg-white/10 hover:text-foreground-dark">About</a></li>
+                <li><a href="#skills" class="block rounded-lg px-3 py-2 text-sm text-muted-dark hover:bg-white/10 hover:text-foreground-dark">Skills</a></li>
+                <li><a href="#projects" class="block rounded-lg px-3 py-2 text-sm text-muted-dark hover:bg-white/10 hover:text-foreground-dark">Projects</a></li>
+                <li><a href="#testimonials" class="block rounded-lg px-3 py-2 text-sm text-muted-dark hover:bg-white/10 hover:text-foreground-dark">Testimonials</a></li>
+                <li><a href="#contact" class="block rounded-lg px-3 py-2 text-sm text-muted-dark hover:bg-white/10 hover:text-foreground-dark">Contact</a></li>
+              </ul>
+            </nav>
+
+            <main class="flex flex-col gap-10 md:gap-20">
+              <div class="relative mt-10 overflow-hidden md:mt-20">
+                <div class="absolute inset-0 z-0 opacity-20 mask-top-fade">
+                  <div class="hero-grid absolute inset-0"></div>
+                  <div class="gradient-flow absolute inset-0 -top-1/2 h-[200%] w-full"></div>
+                </div>
+
+                <div class="relative z-10 flex flex-col items-center gap-8 py-20 px-4 text-center">
+                  <div class="flex items-center gap-2 rounded-full border border-white/10 bg-card-dark/50 px-3 py-1 text-xs text-muted-dark backdrop-blur-sm">
+                    <span class="relative flex h-2 w-2">
+                      <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                      <span class="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
+                    </span>
+                    <span>Available for new projects</span>
+                  </div>
+
+                  <h1 class="max-w-3xl text-4xl font-bold tracking-tighter text-foreground-dark md:text-6xl">
+                    Crafting Digital Experiences That
+                    <span class="gradient-flow gradient-text">Inspire &amp; Convert</span>
+                  </h1>
+
+                  <p class="max-w-2xl text-base text-muted-dark md:text-lg">
+                    Specializing in frontend development and pixel-perfect landing pages that are not only beautiful but also performant and user-friendly.
+                  </p>
+
+                  <div class="mt-4 flex flex-wrap justify-center gap-4">
+                    <a href="#contact" class="flex h-12 min-w-[84px] items-center justify-center gap-2 rounded-lg bg-primary px-6 text-base font-bold text-white shadow-lg shadow-primary/20 transition-transform hover:scale-105">
+                      <span class="material-symbols-outlined">email</span>
+                      <span>Let's Talk</span>
+                    </a>
+                    <a href="#projects" class="flex h-12 min-w-[84px] items-center justify-center gap-2 rounded-lg border border-white/10 bg-card-dark/50 px-6 text-base font-bold text-foreground-dark backdrop-blur-sm transition-transform hover:scale-105 hover:bg-white/10">
+                      <span class="material-symbols-outlined">arrow_downward</span>
+                      <span>See My Work</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <section id="about" class="px-4">
+                <h2 class="text-foreground-dark pb-3 pt-5 text-[22px] font-bold">About Me</h2>
+
+                <div class="@container flex rounded-xl border border-white/10 bg-card-dark p-4">
+                  <div class="flex w-full flex-col gap-6 @[520px]:flex-row @[520px]:items-center @[520px]:justify-between">
+                    <div class="grid w-full gap-6 @[520px]:grid-cols-[auto,1fr] @[520px]:items-center">
+                      <div class="flex flex-col items-center gap-4">
+                        <div class="aspect-square w-32 min-h-32 rounded-full bg-cover bg-center bg-no-repeat bg-profile" data-alt="Professional headshot of Jane Doe"></div>
+                        <a href="#contact" class="flex h-10 min-w-[84px] max-w-[160px] items-center justify-center rounded-lg bg-white/10 px-4 text-sm font-bold text-foreground-dark hover:bg-white/20 mt-2">
+                          <span class="truncate">Get In Touch</span>
+                        </a>
+                      </div>
+                      <div class="group relative overflow-hidden rounded-xl border border-white/10 bg-card-dark p-6 transition-all duration-300 hover:border-white/30 hover:shadow-lg hover:-translate-y-0.5">
+                        <div class="absolute inset-x-0 top-0 h-1 gradient-flow"></div>
+
+                        <p class="text-foreground-dark text-xl md:text-2xl font-extrabold leading-tight tracking-[-0.015em] transition-transform duration-300 group-hover:scale-[1.01]">
+                          <span class="mr-2 inline-block align-middle">👋</span>
+                          <span id="typed-greeting" class="gradient-flow gradient-text"></span>
+                        </p>
+
+                        <p class="text-muted-dark mt-3 text-base leading-relaxed transition-colors duration-300 group-hover:text-foreground-dark">
+                          Hi, I'm Abhijeet — a frontend web developer crafting clean, modern, and responsive websites. I specialize in landing pages, portfolios, and small business sites that look professional and work seamlessly across devices.
+                        </p>
+
+                        <ul class="mt-4 mb-2 space-y-2">
+                          <li class="flex items-start gap-2 transition-transform duration-300 group-hover:translate-x-1">
+                            <span class="material-symbols-outlined text-primary text-base">check_circle</span>
+                            <span class="text-muted-dark text-base">Clean, organized design</span>
+                          </li>
+                          <li class="flex items-start gap-2 transition-transform duration-300 group-hover:translate-x-1">
+                            <span class="material-symbols-outlined text-primary text-base">bolt</span>
+                            <span class="text-muted-dark text-base">Fast-loading experiences</span>
+                          </li>
+                          <li class="flex items-start gap-2 transition-transform duration-300 group-hover:translate-x-1">
+                            <span class="material-symbols-outlined text-primary text-base">phone_iphone</span>
+                            <span class="text-muted-dark text-base">Mobile responsiveness</span>
+                          </li>
+                          <li class="flex items-start gap-2 transition-transform duration-300 group-hover:translate-x-1">
+                            <span class="material-symbols-outlined text-primary text-base">dashboard</span>
+                            <span class="text-muted-dark text-base">User-friendly layouts</span>
+                          </li>
+                        </ul>
+
+                        <p class="text-muted-dark mt-4 text-base leading-relaxed transition-colors duration-300 group-hover:text-foreground-dark">
+                          Always eager to learn, I'm a quick study, collaborative, and ready for new challenges.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section id="skills" class="px-4">
+                <h2 class="text-foreground-dark pb-3 pt-5 text-[22px] font-bold">My Skills</h2>
+
+                <div id="skills-grid" class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                  <button type="button" class="skill-card group flex flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-card-dark p-6 text-center transition-transform duration-200 hover:-translate-y-1 hover:scale-105 hover:border-white/60 hover:shadow-lg" data-description="JavaScript is a versatile programming language for building dynamic, interactive web apps.">
+                    <i class="devicon-javascript-plain colored text-5xl transition-transform group-hover:scale-110"></i>
+                    <p class="text-foreground-dark text-sm font-medium transition-colors group-hover:text-white group-hover:font-bold">JavaScript</p>
+                    <div class="skill-desc mt-2 text-xs text-muted-dark hidden"></div>
+                  </button>
+
+                  <button type="button" class="skill-card group flex flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-card-dark p-6 text-center transition-transform duration-200 hover:-translate-y-1 hover:scale-105 hover:border-white/60 hover:shadow-lg" data-description="React is a library for building component-based user interfaces with efficient state management.">
+                    <i class="devicon-react-original colored text-5xl transition-transform group-hover:scale-110"></i>
+                    <p class="text-foreground-dark text-sm font-medium transition-colors group-hover:text-white group-hover:font-bold">React</p>
+                    <div class="skill-desc mt-2 text-xs text-muted-dark hidden"></div>
+                  </button>
+
+                  <button type="button" class="skill-card group flex flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-card-dark p-6 text-center transition-transform duration-200 hover:-translate-y-1 hover:scale-105 hover:border-white/60 hover:shadow-lg" data-description="Tailwind CSS is a utility-first CSS framework for rapidly building modern, responsive UIs.">
+                    <i class="devicon-tailwindcss-plain colored text-5xl transition-transform group-hover:scale-110"></i>
+                    <p class="text-foreground-dark text-sm font-medium transition-colors group-hover:text-white group-hover:font-bold">Tailwind CSS</p>
+                    <div class="skill-desc mt-2 text-xs text-muted-dark hidden"></div>
+                  </button>
+
+                  <button type="button" class="skill-card group flex flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-card-dark p-6 text-center transition-transform duration-200 hover:-translate-y-1 hover:scale-105 hover:border-white/60 hover:shadow-lg" data-description="HTML5 provides the semantic structure and elements to build accessible web pages.">
+                    <i class="devicon-html5-plain colored text-5xl transition-transform group-hover:scale-110"></i>
+                    <p class="text-foreground-dark text-sm font-medium transition-colors group-hover:text-white group-hover:font-bold">HTML5</p>
+                    <div class="skill-desc mt-2 text-xs text-muted-dark hidden"></div>
+                  </button>
+
+                  <button type="button" class="skill-card group flex flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-card-dark p-6 text-center transition-transform duration-200 hover:-translate-y-1 hover:scale-105 hover:border-white/60 hover:shadow-lg" data-description="CSS3 styles and layouts the web, enabling animations, responsive design, and visual polish.">
+                    <i class="devicon-css3-plain colored text-5xl transition-transform group-hover:scale-110"></i>
+                    <p class="text-foreground-dark text-sm font-medium transition-colors group-hover:text-white group-hover:font-bold">CSS3</p>
+                    <div class="skill-desc mt-2 text-xs text-muted-dark hidden"></div>
+                  </button>
+
+                  <button type="button" class="skill-card group flex flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-card-dark p-6 text-center transition-transform duration-200 hover:-translate-y-1 hover:scale-105 hover:border-white/60 hover:shadow-lg" data-description="Figma is a collaborative design tool for prototyping and UI design systems.">
+                    <i class="devicon-figma-plain colored text-5xl transition-transform group-hover:scale-110"></i>
+                    <p class="text-foreground-dark text-sm font-medium transition-colors group-hover:text-white group-hover:font-bold">Figma</p>
+                    <div class="skill-desc mt-2 text-xs text-muted-dark hidden"></div>
+                  </button>
+
+                  <button type="button" class="skill-card group flex flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-card-dark p-6 text-center transition-transform duration-200 hover:-translate-y-1 hover:scale-105 hover:border-white/60 hover:shadow-lg" data-description="Next.js is a React framework for server-side rendering, routing, and performance optimizations.">
+                    <i class="devicon-nextjs-original text-5xl text-white transition-transform group-hover:scale-110"></i>
+                    <p class="text-foreground-dark text-sm font-medium transition-colors group-hover:text-white group-hover:font-bold">Next.js</p>
+                    <div class="skill-desc mt-2 text-xs text-muted-dark hidden"></div>
+                  </button>
+
+                  <button type="button" class="skill-card group flex flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-card-dark p-6 text-center transition-transform duration-200 hover:-translate-y-1 hover:scale-105 hover:border-white/60 hover:shadow-lg" data-description="Node.js lets you run JavaScript on the server to build APIs and backend services.">
+                    <i class="devicon-nodejs-plain colored text-5xl transition-transform group-hover:scale-110"></i>
+                    <p class="text-foreground-dark text-sm font-medium transition-colors group-hover:text-white group-hover:font-bold">Node.js</p>
+                    <div class="skill-desc mt-2 text-xs text-muted-dark hidden"></div>
+                  </button>
+
+                  <button type="button" class="skill-card group flex flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-card-dark p-6 text-center transition-transform duration-200 hover:-translate-y-1 hover:scale-105 hover:border-white/60 hover:shadow-lg" data-description="TypeScript adds static typing to JavaScript for better tooling, safety, and scalability.">
+                    <i class="devicon-typescript-plain colored text-5xl transition-transform group-hover:scale-110"></i>
+                    <p class="text-foreground-dark text-sm font-medium transition-colors group-hover:text-white group-hover:font-bold">TypeScript</p>
+                    <div class="skill-desc mt-2 text-xs text-muted-dark hidden"></div>
+                  </button>
+
+                  <button type="button" class="skill-card group flex flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-card-dark p-6 text-center transition-transform duration-200 hover:-translate-y-1 hover:scale-105 hover:border-white/60 hover:shadow-lg" data-description="Git is a version control system for tracking changes, branching, and collaborating on code.">
+                    <i class="devicon-git-plain colored text-5xl transition-transform group-hover:scale-110"></i>
+                    <p class="text-foreground-dark text-sm font-medium transition-colors group-hover:text-white group-hover:font-bold">Git</p>
+                    <div class="skill-desc mt-2 text-xs text-muted-dark hidden"></div>
+                  </button>
+                </div>
+              </section>
+
+              <section id="projects" class="px-4">
+                <h2 class="text-foreground-dark pb-3 pt-5 text-[22px] font-bold">My Work</h2>
+
+                <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                  <div class="flex flex-col gap-6 rounded-xl border border-white/10 bg-card-dark p-4 sm:p-6 lg:col-span-1">
+                    <div class="flex items-center gap-4">
+                      <div class="relative flex size-12 items-center justify-center rounded-full bg-background-dark">
+                        <div class="gradient-flow absolute inset-0 rounded-full opacity-50"></div>
+                        <span class="material-symbols-outlined z-10 text-3xl">bar_chart_4_bars</span>
+                      </div>
+                      <div>
+                        <h3 class="text-lg font-bold text-foreground-dark">Project Stats</h3>
+                        <p class="text-sm text-muted-dark">Total Projects: 12</p>
+                      </div>
+                    </div>
+
+                    <div class="rounded-lg bg-background-dark p-6">
+                      <h4 class="mb-4 text-base font-semibold text-foreground-dark">E-commerce Platform</h4>
+                      <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                          <p class="w-28 text-sm text-muted-dark">React</p>
+                          <div class="h-2 flex-1 rounded-full bg-card-dark">
+                            <div class="gradient-flow h-2 rounded-full" style="width: 50%"></div>
+                          </div>
+                          <p class="w-10 text-right text-sm font-medium text-foreground-dark">50%</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                          <p class="w-28 text-sm text-muted-dark">Next.js</p>
+                          <div class="h-2 flex-1 rounded-full bg-card-dark">
+                            <div class="gradient-flow h-2 rounded-full" style="width: 30%"></div>
+                          </div>
+                          <p class="w-10 text-right text-sm font-medium text-foreground-dark">30%</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                          <p class="w-28 text-sm text-muted-dark">Stripe API</p>
+                          <div class="h-2 flex-1 rounded-full bg-card-dark">
+                            <div class="gradient-flow h-2 rounded-full" style="width: 15%"></div>
+                          </div>
+                          <p class="w-10 text-right text-sm font-medium text-foreground-dark">15%</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                          <p class="w-28 text-sm text-muted-dark">Tailwind CSS</p>
+                          <div class="h-2 flex-1 rounded-full bg-card-dark">
+                            <div class="gradient-flow h-2 rounded-full" style="width: 5%"></div>
+                          </div>
+                          <p class="w-10 text-right text-sm font-medium text-foreground-dark">5%</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="projects-grid" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2">
+                    <div class="project-card flex cursor-pointer flex-col gap-4 rounded-xl border-2 border-primary/50 bg-card-dark p-4 ring-2 ring-primary/20 transition-all hover:border-primary" data-tech='{"HTML":40,"CSS":40,"JavaScript":20}' data-link="https://peronoma.github.io/Fasos-eat/">
+                      <div class="aspect-video w-full rounded-lg bg-cover bg-center bg-no-repeat bg-project-fasos" data-alt="Screenshot of Fasos Eat"></div>
+                      <div class="flex flex-col">
+                        <div class="flex items-center justify-between">
+                          <h3 class="font-bold text-foreground-dark">Fasos Eat</h3>
+                          <a href="https://peronoma.github.io/Fasos-eat/" target="_blank" rel="noopener noreferrer" class="flex h-8 items-center rounded-lg bg-primary px-3 text-xs font-semibold text-white transition-transform shadow-lg shadow-primary/30 hover:scale-105">Visit</a>
+                        </div>
+                        <p class="text-sm text-muted-dark">A landing page for menu of a restaurent.</p>
+                        <div class="tech-details mt-3 hidden">
+                          <div class="space-y-2"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="project-card flex cursor-pointer flex-col gap-4 rounded-xl border border-primary/40 bg-card-dark p-4 transition-all hover:border-primary/70" data-tech='{"HTML":25,"CSS":35,"JavaScript":40}' data-link="https://peronoma.github.io/Fungrow-beta/">
+                      <div class="aspect-video w-full rounded-lg bg-cover bg-center bg-no-repeat bg-project-fungrow" data-alt="Screenshot of Fungrow"></div>
+                      <div class="flex flex-col">
+                        <div class="flex items-center justify-between">
+                          <h3 class="font-bold text-foreground-dark">Fungrow beta</h3>
+                          <a href="https://peronoma.github.io/Fungrow-beta/" target="_blank" rel="noopener noreferrer" class="flex h-8 items-center rounded-lg bg-primary px-3 text-xs font-semibold text-white transition-transform shadow-lg shadow-primary/30 hover:scale-105">Visit</a>
+                        </div>
+                        <p class="text-sm text-muted-dark">Website for teen to earn money by doing simple projects.</p>
+                        <div class="tech-details mt-3 hidden">
+                          <div class="space-y-2"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="project-card flex cursor-pointer flex-col gap-4 rounded-xl border border-primary/40 bg-card-dark p-4 transition-all hover:border-primary/70" data-tech='{"HTML":45,"CSS":35,"JavaScript":20}' data-link="https://peronoma.github.io/Timdog/">
+                      <div class="aspect-video w-full rounded-lg bg-cover bg-center bg-no-repeat bg-project-timdog" data-alt="Screenshot of Timdog"></div>
+                      <div class="flex flex-col">
+                        <div class="flex items-center justify-between">
+                          <h3 class="font-bold text-foreground-dark">Timdog</h3>
+                          <a href="https://peronoma.github.io/Timdog/" target="_blank" rel="noopener noreferrer" class="flex h-8 items-center rounded-lg bg-primary px-3 text-xs font-semibold text-white transition-transform shadow-lg shadow-primary/30 hover:scale-105">Visit</a>
+                        </div>
+                        <p class="text-sm text-muted-dark">Website for pet owners to share their relationship with their pets.</p>
+                        <div class="tech-details mt-3 hidden">
+                          <div class="space-y-2"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="project-card flex cursor-pointer flex-col gap-4 rounded-xl border border-primary/40 bg-card-dark p-4 transition-all hover:border-primary/70" data-tech='{"HTML":30,"CSS":50,"JavaScript":20}' data-link="https://peronoma.github.io/portfolio_me/">
+                      <div class="aspect-video w-full rounded-lg bg-cover bg-center bg-no-repeat bg-project-social" data-alt="Screenshot of Social page"></div>
+                      <div class="flex flex-col">
+                        <div class="flex items-center justify-between">
+                          <h3 class="font-bold text-foreground-dark">Social page</h3>
+                          <a href="https://peronoma.github.io/portfolio_me/" target="_blank" rel="noopener noreferrer" class="flex h-8 items-center rounded-lg bg-primary px-3 text-xs font-semibold text-white transition-transform shadow-lg shadow-primary/30 hover:scale-105">Visit</a>
+                        </div>
+                        <p class="text-sm text-muted-dark">A landing page for all the social media handles.</p>
+                        <div class="tech-details mt-3 hidden">
+                          <div class="space-y-2"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section id="testimonials" class="px-4">
+                <h2 class="text-foreground-dark pb-3 pt-5 text-[22px] font-bold">What Others Say</h2>
+
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  <div class="relative overflow-hidden rounded-xl border border-white/10 bg-card-dark p-6">
+                    <div class="absolute -top-4 -right-4 size-20 rounded-full bg-primary/10"></div>
+                    <p class="text-muted-dark z-10 text-base">
+                      "Abhijit delivered polished, high-performing pages that matched our vision perfectly. His response time was fast and feedback was handled immediately."
+                    </p>
+                    <div class="mt-4 flex items-center gap-3">
+                      <img alt="Alex Johnson's headshot" class="size-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeRhGPEvOND0Hjvbbj42rTo8WzP0lE6WJXzXlUeMmFWo17xAyBY6f3-2yd1EIIOYeOJoBoYmuPOA7yc2y0dit4ZRdOpGhlX-QEau4HKQkZ3hXAGKNgFc7GOg_fenekq61_0d2kVSy8F9-02MHpKK2U1vukH14tt3ezFrn_pKcFcDRfZezXo6OpC2or14Btnsjk8Qv1XocxIHjgYwqdVOcBd9hWm3Il0IRd8WD9xu-GXlIOMywfwpQwmqPkhyoL5smklCLc02wsUx0g" />
+                      <div>
+                        <p class="font-bold text-foreground-dark">Alex Johnson</p>
+                        <p class="text-sm text-muted-dark">CEO, Tech Innovators</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="relative overflow-hidden rounded-xl border border-white/10 bg-card-dark p-6">
+                    <div class="absolute -top-4 -right-4 size-20 rounded-full bg-primary/10"></div>
+                    <p class="text-muted-dark z-10 text-base">
+                      "Great attention to detail and clean code. Abhijit turned changes around quickly and kept communication prompt throughout the project."
+                    </p>
+                    <div class="mt-4 flex items-center gap-3">
+                      <img alt="Samantha Lee's headshot" class="size-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS5_27je1BXSvUj3NuPtvs6QeaiLTxxIdZ-yr2qxhyZYMSxulzuN4NVmtqGcfspgQM4tsOoqFbZEZxlQlCT6AtOMOlT7httIAmY7dYajXqbiI9_m67I_IwM9RDB2NVhMXsWAsyZ0BQsW0ybHlRPtCoe3VP-vlJ_Iq4vX_s3SOInKyculaAMwZfm16r7wiEd7O3wZsOBjKO5qPG49fa3w1IjJ7KJKOs7QQwQnuovWAxY1acA606pZwyE5AHCJiGXIFOv2-ZOGMWkI7b" />
+                      <div>
+                        <p class="font-bold text-foreground-dark">Samantha Lee</p>
+                        <p class="text-sm text-muted-dark">Project Manager, Creative Solutions</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section id="socials" class="px-4">
+                <h2 class="text-foreground-dark pb-3 pt-5 text-[22px] font-bold">Connect With Me</h2>
+
+                <div class="flex flex-wrap justify-center gap-4 rounded-xl border border-white/10 bg-card-dark p-6">
+                  <a href="https://github.com/Peronoma" title="GitHub" class="flex h-12 w-12 items-center justify-center rounded-lg text-muted-dark transition-colors hover:bg-primary hover:text-white">
+                    <i class="devicon-github-original text-2xl"></i>
+                  </a>
+                  <a href="https://www.linkedin.com/in/abhijeetthakur-9364b3352/" title="LinkedIn" class="flex h-12 w-12 items-center justify-center rounded-lg text-muted-dark transition-colors hover:bg-primary hover:text-white">
+                    <i class="devicon-linkedin-plain text-2xl"></i>
+                  </a>
+                  <a href="#" title="Twitter" class="flex h-12 w-12 items-center justify-center rounded-lg text-muted-dark transition-colors hover:bg-primary hover:text-white">
+                    <i class="devicon-twitter-original text-2xl"></i>
+                  </a>
+                  <a href="#" title="Dribbble" class="flex h-12 w-12 items-center justify-center rounded-lg text-muted-dark transition-colors hover:bg-primary hover:text-white">
+                    <i class="devicon-dribbble-plain text-2xl"></i>
+                  </a>
+                </div>
+              </section>
+
+              <section id="contact" class="px-4 pb-10">
+                <h2 class="px-4 pb-3 pt-5 text-center text-[22px] font-bold text-foreground-dark">
+                  Let's Build Something <span class="gradient-flow gradient-text">Together</span>
+                </h2>
+                <p class="text-muted-dark mb-8 text-center">Have a project in mind or just want to say hi? Feel free to reach out.</p>
+
+                <div class="mx-auto max-w-xl rounded-xl border border-white/10 bg-card-dark p-8">
+                  <form id="contact-form" action="/api/contact" method="POST" class="flex flex-col gap-6">
+                    <div>
+                      <label for="name" class="mb-2 block text-sm font-medium text-foreground-dark">Full Name</label>
+                      <input id="name" name="name" type="text" autocomplete="name" class="block w-full rounded-lg border-white/10 bg-background-dark py-2.5 px-4 text-foreground-dark placeholder:text-gray-500 focus:border-primary focus:ring-primary sm:text-sm sm:leading-6" />
+                    </div>
+                    <div>
+                      <label for="email" class="mb-2 block text-sm font-medium text-foreground-dark">Email Address</label>
+                      <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-lg border-white/10 bg-background-dark py-2.5 px-4 text-foreground-dark placeholder:text-gray-500 focus:border-primary focus:ring-primary sm:text-sm sm:leading-6" />
+                    </div>
+                    <div>
+                      <label for="message" class="mb-2 block text-sm font-medium text-foreground-dark">Message</label>
+                      <textarea id="message" name="message" rows="4" class="block w-full rounded-lg border-white/10 bg-background-dark py-2.5 px-4 text-foreground-dark placeholder:text-gray-500 focus:border-primary focus:ring-primary sm:text-sm sm:leading-6"></textarea>
+                    </div>
+                    <button type="submit" class="flex h-12 w-full items-center justify-center rounded-lg bg-primary px-5 text-base font-bold text-white hover:bg-blue-600">
+                      <span class="truncate">Send Message</span>
+                    </button>
+                  </form>
+                  <p id="contact-status" class="mt-3 text-sm text-muted-dark"></p>
+                </div>
+              </section>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
